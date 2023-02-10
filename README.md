@@ -23,6 +23,7 @@ Number.isFinite(2e64); // true
 Javascript also have an isFinite() global function. Difference between Number.isFinite() and isFinite() is type conversion. Number.isFinite() only works with integer numbers not strings. We can see that in following example
 ```javascript
 Number.isFinite('0'); // false because '0' is a string not an number
+isFinite('0'); // true
 ```
 ### 2. The Number.isInteger() static method determines whether the passed value is an integer.
 It takes one argument 'any value' and returns 'true' or 'false'.
@@ -106,7 +107,7 @@ Here are a few examples to demonstrate how the Number.parseInt() method can be u
 ```js
 Number.parseInt("123"); // 123
 Number.parseInt("1011", 2); // 11
-Number.parseInt("12", 8); // 14
+Number.parseInt("14", 8); // 12
 Number.parseInt("JavaScript"); // NaN
 ```
 ### 7. The toExponential() method returns a string representing the Number object in exponential notation
@@ -165,11 +166,18 @@ const number = 3500;
 
 console.log(number.toLocaleString()); // "3,500" if in U.S. English locale
 ```
-### 10. The toPrecision() method is used to format a number to a specified number of significant figures.
+We can see another example to understand method toLocaleString()
+```js
+number.toLocaleString('ar-EG'); // → ١٢٣٤٥٦٫٧٨٩
+```
+It outputs 3500 in Arabic language
+### 10. The toPrecision() method in JavaScript is used to format a number by specifying the number of significant digits to display. 
+Here's an example of using the toPrecision() method:
 ```js
 (123.456).toPrecision(2); //  "1.2e+2"
 (123.456).toPrecision(5); //  "123.46"
 ```
+In this example, the toPrecision() method is called on a number and is passed a number of significant digits to display. The method returns a string representation of the number, formatted with the specified number of significant digits. The string may include scientific notation, depending on the number and the number of significant digits specified.
 ### 11. The toString() method in JavaScript is a method that is used to convert a number to a string. 
 The general syntax for using the toString() method is:
 ```js
@@ -408,5 +416,130 @@ The search() method returns the position of the first occurrence of the pattern 
 
 It's worth noting that the search() method is similar to the indexOf() method in JavaScript, but the search() method takes a regular expression as its argument, whereas the indexOf() method takes a string.
 
+### 11. The slice() method in JavaScript is used to extract a part of an array or a string and return a new array or a string, respectively. 
+Here's an example of using the slice() method with an array:
+```js
+const fruits = ['apple', 'banana', 'kiwi', 'mango'];
 
+const slicedFruits = fruits.slice(1, 3);
+slicedFruits; // ['banana', 'kiwi']
+```
+In this example, the slice() method is used to extract elements from the fruits array starting from the index 1 (inclusive) and ending at index 3 (exclusive), and return a new array slicedFruits containing the extracted elements ['banana', 'kiwi'].
 
+Here's an example of using the slice() method with a string:
+```js
+const sentence = "Hello, World!";
+
+const slicedSentence = sentence.slice(7, 12);
+slicedSentence; // 'World'
+```
+In this example, the slice() method is used to extract characters from the sentence string starting from the index 7 (inclusive) and ending at index 12 (exclusive), and return a new string slicedSentence containing the extracted characters 'World'.
+### 12. The split() method in JavaScript is used to split a string into an array of substrings based on a specified separator. 
+Here's an example of using the split() method:
+```js
+let sentence = "Hello, World!";
+let words = sentence.split(" ");
+words; // ['Hello,', 'World!']
+```
+Here's another example of using the split() method with a different separator:
+```js
+let birthday = "17-03-2005";
+let birtharr = birthday.split("-");
+birtharr; // ['17','03','2005']
+```
+### 13. The substr() method in JavaScript is used to extract a part of a string and return a new string. 
+Here's an example of using the substr() method:
+```js
+const sentence = "Hello, World!";
+
+const subSentence = sentence.substr(7, 5);
+subSentence; // 'World'
+```
+In this example, the substr() method is used to extract a part of the sentence string starting from the index 7 and containing 5 characters. The method returns a new string subSentence containing the extracted characters 'World'.
+
+```js
+const message = "Good morning!";
+
+const subMessage = message.substr(5, 8);
+subMessage; // 'morning'
+```
+In this example, the substr() method is used to extract a part of the message string starting from the index 5 and containing 8 characters. The method returns a new string subMessage containing the extracted characters 'morning'.
+
+Javascript also have a ***substring()*** method.There are some differences between the two methods:
+1. Starting and ending indices: The substr() method takes two arguments: the starting index and the length of the substring to extract. The substring() method takes two arguments: the starting index and the ending index (exclusive).
+
+2. Negative arguments: If either argument to substr() is negative, it is treated as zero. If either argument to substring() is negative, it is treated as the length of the string plus the argument (i.e. a negative argument counts from the end of the string).
+
+Here's an example to demonstrate the difference:
+```js 
+const message = "Good morning!";
+
+const substrMessage = message.substr(5, 8);
+const substringMessage = message.substring(5, 13);
+console.log(substrMessage); // 'morning'
+console.log(substringMessage); // 'morning'
+```
+In this example, both the substr() and substring() methods extract a part of the message string. The substr() method takes two arguments: 5 (the starting index) and 8 (the length of the substring to extract). The method returns the 'morning' substring. The substring() method takes two arguments: 5 (the starting index) and 13 (the ending index). The method also returns the 'morning' substring.
+If we change the ending index in the substring() method to a number greater than the length of the string, it will automatically adjust the ending index to the length of the string:
+```js 
+const substringMessage = message.substring(5, 20);
+console.log(substringMessage); // 'morning!'
+```
+In this example, the substring() method takes two arguments: 5 (the starting index) and 20 (the ending index). Since the string message has a length of only 12, the ending index is automatically adjusted to 12, so the method returns the substring 'morning!'.
+### 14. The toLocaleLowerCase() method in JavaScript is used to convert a string to lowercase based on the locale. 
+Here are some examples of how to use this method:
+```js
+let msg = "Javascript Methods";
+let lower_msg = msg.toLocaleLowerCase();
+lower_msg // "javascript methods"
+```
+In this example, the toLocaleLowerCase() method is used to convert the message string to lowercase. The resulting string is "javascript methods".
+```js
+let msg = "HÄLLO WÖRLD";
+let lower_msg = msg.toLocaleLowerCase();
+lower_msg // "hällo wörld"
+```
+In this example, the toLocaleLowerCase() method is used to convert a string with uppercase characters with diacritical marks. The resulting string is 'hällo wörld'.
+
+It's important to note that the behavior of toLocaleLowerCase() may vary based on the locale and the platform.
+### 15. The toLocaleUpperCase() method in JavaScript is used to convert a string to uppercase based on the locale. 
+Here are some examples of how to use this method:
+```js
+const message = "Hello World";
+const upperCaseMessage = message.toLocaleUpperCase();
+upperCaseMessage; // 'HELLO WORLD'
+```
+toLocaleUpperCase() method like an toLocaleLowerCase() have vary behavior based on the locale and the platform.
+### 16. The toLowerCase() method in JavaScript is used to convert a string to lowercase. 
+Here's an example of how to use this method:
+```js
+const message = "Hello World";
+const lowerCaseMessage = message.toLowerCase();
+lowerCaseMessage; // 'hello world'
+```
+In this example, the toLowerCase() method is used to convert the message string to lowercase. The resulting string is 'hello world'.
+
+***Note that message string is not changing. The method toLowerCase() creates new string. Because string is immutable type.***
+### 17. The toUpperCase() method in JavaScript is used to convert a string to uppercase. 
+Here's an example of how to use this method:
+```js
+const message = "Hello World";
+const upperCaseMessage = message.toUpperCase();
+upperCaseMessage; // 'HELLO WORLD'
+```
+In this example, the toUpperCase() method is used to convert the message string to uppercase. The resulting string is 'HELLO WORLD'.
+
+***Note that message string is not changing. The method toUpperCase() creates new string. Because string is immutable type.***
+### 18. The toString() method in JavaScript is used to convert a value to a string. 
+Here are some examples of using the toString() method:
+```js
+(123).toString(); // '123'
+(true).toString(); // 'true'
+```
+In addition to its basic use for converting values to strings, the toString() method also has some additional capabilities. For example, when used with numbers, it can be used to convert a number to a binary, octal, or hexadecimal string representation:
+```js
+(10).toString(2); // '1010'
+(10).toString(8); // '12'
+(10).toString(16).toUpperCase(); // 'A'
+```
+In these examples, the toString() method is passed a radix (the base of the number system), and the resulting string representation is in binary, octal, or hexadecimal, respectively.
