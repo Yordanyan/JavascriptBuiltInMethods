@@ -198,3 +198,215 @@ let date = new Date();
 date.valueOf(); // the number of milliseconds since January 1, 1970, 00:00:00 UTC
 ```
 
+### ***Boolean Methods***
+
+In JavaScript, there are several built-in methods that return a Boolean value (true or false). Some of the most commonly used ones are
+### 1. The Array.includes() returns true if an array includes a certain element, and false otherwise.
+```js
+let fruits = ['apple', 'banana', 'cherry'];
+
+// Check if an array includes a certain element Example 1
+fruits.includes('apple');  // true
+fruits.includes('pear');   // false
+
+
+// Check if an array includes an element with a specific index Example 2
+fruits.includes('banana', 1);   // true
+fruits.includes('banana', 2);   // false
+```
+In the example, we create an array of fruits and use the includes() method to check if the array includes the elements 'apple' and 'pear'. In the second example, we also use the includes() method but with a second argument that specifies the index at which to start the search.
+
+### 2. The includes() method in JavaScript is used to check if a given string contains a specified substring or not. 
+It returns a boolean value (true if the substring is present, false otherwise). Here are some examples to demonstrate its usage:
+```js
+let str = "Hello, World!";
+
+// Check if the string contains the substring "Hello"
+console.log(str.includes("Hello")); // true
+
+// Check if the string contains the substring "Goodbye"
+console.log(str.includes("Goodbye")); // false
+
+// Check if the string contains the substring "World" starting from index 7
+console.log(str.includes("World", 7)); // true
+
+// Check if the string contains the substring "world" (case sensitive)
+console.log(str.includes("world")); // false
+```
+You can also use the includes() method with arrays to check if an array contains a specified element. For example:
+```js
+let arr = [1, 2, 3, 4, 5];
+
+// Check if the array contains the element 3
+console.log(arr.includes(3)); // true
+
+// Check if the array contains the element 6
+console.log(arr.includes(6)); // false
+```
+
+### ***String Methods***
+### 1. The charAt() method in JavaScript is used to get the character at a specified index in a string. 
+Here's an example to demonstrate its usage:
+```js
+let str = "Hello World!";
+
+str.charAt(0); // H
+```
+The square bracket notation and this Method is equivalent
+```js
+str[0]; // H
+```
+### 2. The charCodeAt() method in JavaScript is used to get the Unicode code of the character at a specified index in a string. 
+The Unicode code is a numerical representation of a character, and it ranges from 0 to 65535.
+```js
+let str = "Hello, World!";
+
+// Get the Unicode code of the character at index 0
+str.charCodeAt(0); // 72
+
+// Get the Unicode code of the character at index 7
+str.charCodeAt(7); // 87
+
+// Get the Unicode code of the character at index 100 (beyond the length of the string)
+str.charCodeAt(100); // NaN
+```
+### 3. The concat() method in JavaScript is used to concatenate two or more strings together into a single string. 
+Here's an example to demonstrate its usage:
+```js
+let str1 = "Hello";
+let str2 = "Methods";
+
+// Concatenate str1 and str2
+let result = str1.concat(" ", str2, "!");
+result // "Hello Methods!"
+```
+We can also concatenate strings using the + operator
+```js
+let str1 = "Hello";
+let str2 = "Methods";
+
+// Concatenate str1 and str2
+let result = str1 + " " + str2 + "!";
+result; // "Hello Methods!"
+```
+### 4. The indexOf() method in JavaScript is used to search for a specified substring in a string, and returns the index of the first occurrence of the substring. 
+If the substring is not found, indexOf() returns -1. Here's an example to demonstrate its usage:
+```js
+let str = "Hello World!";
+
+str.indexOf("Hello"); // 0
+str.indexOf("world"); // -1
+```
+### 5. The lastIndexOf() method in JavaScript is used to search for a specified substring in a string, starting from the end of the string, and returns the index of the last occurrence of the substring. 
+If the substring is not found, lastIndexOf() returns -1. Here's an example to demonstrate its usage:
+```js
+let str = "developer";
+
+str.lastIndexOf("e"); // 7
+```
+### 6. The localeCompare() method in JavaScript is used to compare two strings in the current locale and returns a number indicating their relative order. 
+The returned value is:
+
+Less than 0 if the first string comes before the second string in the current locale's sort order.
+0 if the two strings are equal in the current locale's sort order.
+Greater than 0 if the first string comes after the second string in the current locale's sort order.
+Here's an example to demonstrate its usage:
+```js
+let str1 = "ä";
+let str2 = "z";
+
+// Compare the two strings in the current locale
+console.log(str1.localeCompare(str2)); // -1
+
+let str3 = "a";
+let str4 = "z";
+
+// Compare the two strings in the current locale
+console.log(str3.localeCompare(str4)); // -1
+```
+In the example above, localeCompare(str2) returns -1, indicating that the first string "ä" comes before the second string "z" in the current locale's sort order. Similarly, localeCompare(str4) returns -1, indicating that the first string "a" comes before the second string "z" in the current locale's sort order.
+### 7. The length property in JavaScript is used to determine the number of elements in an object. 
+This property is commonly used with arrays and strings.
+
+For example, you can use the length property to find the number of elements in an array:
+```js
+let arr = ["push","pop","shift","unshift"];
+
+arr.length; // 4
+```
+We can delete last element using length property
+```js 
+arr.length = arr.length - 1;
+arr.length; // 3
+arr // ["push","pop","shift"]
+```
+If we call length in string it will output the count of characters
+```js
+let name = "John Doe";
+name.length; // 8
+```
+### 8. The match() method in JavaScript is used to search a string for a match against a regular expression and returns the matching result as an array.
+
+Here's an example of using the match() method to search for a pattern in a string:
+```js
+let str = "Understanding and Using Built In Javascript methods";
+let pattern = /[A-Z]/g;
+let matches = str.match(pattern);
+matches // ['U','U','B','I','J']
+```
+In this example, the match() method searches the string str for any uppercase letters and returns the matching characters in an array. The /[A-Z]/g regular expression specifies that we want to match uppercase letters, and the g flag indicates that we want to search for multiple occurrences of the pattern in the string.
+***If there are no matches, the match() method returns null.***
+```js
+str.match(/[1-10]/g) // null
+```
+In JavaScript, flags are used in regular expressions to modify the behavior of the match() method and other regular expression methods.
+1) g (global) flag: When the g flag is used, the match() method will return all matches in the string, not just the first one. For example:
+```js
+let str = "The quick brown fox jumps over the lazy dog.";
+let pattern = /the/gi;
+let matches = str.match(pattern);
+matches; // Output: ["The", "the"]
+```
+2) i (ignore case) flag: When the i flag is used, the match() method will perform a case-insensitive match. For example:
+```js
+let str = "The quick brown FOX jumps over the lazy dog.";
+let pattern = /fox/i;
+let matches = str.match(pattern);
+matches; // ["FOX"]
+```
+3) m (multiline) flag: When the m flag is used, the ^ and $ symbols in the regular expression will match the beginning and end of each line, respectively, in a multiline string. For example:
+```js
+let str = "The quick\nbrown fox\njumps over\nthe lazy dog.";
+let pattern = /^the/gm;
+let matches = str.match(pattern);
+matches; // Output: ["The", "the"]
+```
+### 9. The replace() method in JavaScript is used to search and replace a string with another string. 
+It can be used to change all occurrences of a specific pattern in a string, or just the first occurrence.
+
+Here's an example of using the replace() method to replace all occurrences of a pattern in a string:
+```js
+let str = "Understanding and Using Built in functions";
+let pattern = /functions/gi;
+let newStr = str.replace(pattern, "methods");
+newStr; //  "Understanding and Using Built in methods"
+```
+In this example, the replace() method searches the string str for all occurrences of the pattern the, and replaces them with the string "a". 
+The /the/gi regular expression specifies that we want to match the string "the" in a case-insensitive manner, and the g flag indicates that we want to replace all occurrences of the pattern in the string.
+### 10. The search() method in JavaScript is used to search for a specified pattern in a string and returns the position of the first occurrence of the pattern.
+
+Here's an example of using the search() method to find the first occurrence of a pattern in a string:
+```js
+let str = "The quick brown fox jumps over the lazy dog.";
+let pattern = /the/i;
+let position = str.search(pattern);
+console.log(position); // Output: 0
+```
+In this example, the search() method searches the string str for the first occurrence of the pattern the. The /the/i regular expression specifies that we want to match the string "the" in a case-insensitive manner.
+
+The search() method returns the position of the first occurrence of the pattern in the string. If the pattern is not found, the method returns -1.
+
+It's worth noting that the search() method is similar to the indexOf() method in JavaScript, but the search() method takes a regular expression as its argument, whereas the indexOf() method takes a string.
+
+
+
