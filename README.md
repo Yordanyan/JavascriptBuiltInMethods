@@ -543,3 +543,202 @@ In addition to its basic use for converting values to strings, the toString() me
 (10).toString(16).toUpperCase(); // 'A'
 ```
 In these examples, the toString() method is passed a radix (the base of the number system), and the resulting string representation is in binary, octal, or hexadecimal, respectively.
+### 19. The endsWith() method in JavaScript checks if a string ends with the specified characters. 
+Here's an syntax of endsWith()
+```js
+endsWith(searchString)
+endsWith(searchString, endPosition)
+```
+Here's an example of how you can use it:
+```js
+let str = "Hello, World!";
+let endsWithWorld = str.endsWith("World!");
+
+endsWithWorld; // true
+```
+In this example, the endsWith() method is used to check if the string str ends with the characters "World!". The result of this method will be a Boolean value that indicates whether the string ends with the specified characters or not. In this case, endsWithWorld will be true, since str does end with "World!".
+
+You can also specify the starting index for the search using the second parameter of the endsWith() method:
+```js
+let str = "Hello, World!";
+let endsWithHello = str.endsWith("Hello", 5);
+
+endsWithHello; // false
+```
+In this example, the endsWith() method is used to check if the string str ends with the characters "Hello" starting from the index 5. The result of this method will be false, since the characters "Hello" do not appear at the end of the string when starting the search from the index 5.
+### 20. The String.fromCharCode() method in JavaScript allows you to convert a sequence of Unicode code points into a string. 
+Here's an example of how you can use it:
+```js
+let string = String.fromCharCode(74,97,118,97);
+string; // "Java"
+```
+In this example, the String.fromCharCode() method is used to convert the Unicode code points 74, 97, 118 and 97 into a string. The result will be the string "Java".
+
+You can also use the String.fromCharCode() method to convert multiple code points into a string:
+```js
+let string = String.fromCharCode(74,97,118,97,115,99,114,105,112,116);
+string; // "Javascript"
+```
+In this example, the String.fromCharCode() method is used to convert the sequence of code points into the string "Javascript".
+
+***Note that the String.fromCharCode() method is a static method, meaning that you call it directly on the String object, rather than on an instance of a string.***
+### 21. The String.fromCodePoint() method in JavaScript is similar to String.fromCharCode() 
+but it can handle a wider range of Unicode code points, including those that are greater than 65,535. 
+Here's an example of how you can use it:
+```js
+let string = String.fromCodePoint(74,97,118,97,115,99,114,105,112,116);
+string; // "Javascript"
+```
+In this example, the String.fromCodePoint() method is used to convert the code points 74,97,118,97,115,99,114,105,112 and 116 into a string. The result will be the string "Javascript".
+
+You can also use the String.fromCodePoint() method to convert code points into a string, even if they are greater than 65,535:
+```js
+let string = String.fromCodePoint(128512);
+
+string // "😀"
+```
+In this example, the String.fromCodePoint() method is used to convert the code point 128512 into a string. The result will be the string representation of the Unicode character "😀" (a smiling face with open mouth and tightly-closed eyes).
+
+***Note that the String.fromCodePoint() method is a static method, meaning that you call it directly on the String object, rather than on an instance of a string.***
+### 22. The indexOf() method in JavaScript is used to find the first occurrence of a specified value in a string. 
+Here's an example of how you can use it:
+```js
+let str = "Hello, World!";
+let indexOfWorld = str.indexOf("World");
+
+indexOfWorld; // 7
+```
+In this example, the indexOf() method is used to find the first occurrence of the string "World" in the string str. The result of this method will be the index of the first occurrence of the specified value in the string, or -1 if the value is not found. 
+In this case, indexOfWorld will be 7, since the first occurrence of "World" in str starts at index 7.
+
+You can also specify the starting index for the search using the second parameter of the indexOf() method:
+```js
+let str = "Hello, World!";
+let indexOfHello = str.indexOf("Hello", 5);
+indexOfHello; // -1
+```
+In this example, the indexOf() method is used to find the first occurrence of the string "Hello" in the string str starting from the index 5. The result of this method will be -1, since the characters "Hello" do not appear in the string str when starting the search from the index 5.
+### 23. The lastIndexOf() method in JavaScript is used to find the last occurrence of a specified value in a string. 
+Here's an example of how you can use it:
+
+```js
+let str = "Hello, World! Hello, World!";
+let lastIndexOfHello = str.lastIndexOf("Hello");
+lastIndexOfHello; // 13
+```
+In this example, the lastIndexOf() method is used to find the last occurrence of the string "Hello" in the string str. The result of this method will be the index of the last occurrence of the specified value in the string, or -1 if the value is not found. In this case, lastIndexOfHello will be 13, since the last occurrence of "Hello" in str starts at index 13.
+
+You can also specify the starting index for the search using the second parameter of the lastIndexOf() method:
+
+```js
+let str = "Hello, World! Hello, World!";
+let lastIndexOfHello = str.lastIndexOf("Hello", 5);
+lastIndexOfHello; // 0
+```
+In this example, the lastIndexOf() method is used to find the last occurrence of the string "Hello" in the string str starting from the index 5. The result of this method will be 0, since the characters "Hello" first appear in the string str starting from the index 0, and when starting the search from the index 5, it finds the first occurrence of the string "Hello".
+### 24. The matchAll() method in JavaScript is used to find all occurrences of a specified regular expression in a string. 
+This method returns an iterator that provides access to the individual matches of the regular expression in the string. 
+Here's an example of how you can use it:
+
+```js
+let str = "Hello, World! Hello, World!";
+let regex = /l/g;
+
+let matches = str.matchAll(regex);
+
+for (let match of matches) {
+    console.log(match[0]); 'l' appears 6 times
+}
+``` 
+In this example, the matchAll() method is used to find all occurrences of the regular expression /Hello/g in the string str. The result of this method will be an iterator that provides access to the individual matches of the regular expression in the string. In this case, the loop will log "l" 6 times, since "l" appears 6 times in the string str.
+
+Note that the matchAll() method is a relatively new addition to the JavaScript language and may not be supported by older browsers. It's also worth noting that this method requires the g (global) flag to be set on the regular expression in order to find all occurrences of the pattern in the string.
+### 25. The normalize() method in JavaScript is used to normalize a string representation of a Unicode character sequence, such that it can be compared in a case-insensitive manner. 
+This method returns a new string that represents the same character sequence as the original string, but with the characters in a standardized form that is appropriate for comparison. 
+Here's an example of how you can use it:
+
+```js
+let str = "m\u00e9dical";
+let normalized = str.normalize();
+
+console.log(normalized); // "médical"
+```
+
+In this example, the normalize() method is used to normalize the string str, which contains the character é (U+00E9) encoded as a combining character sequence. The result of this method will be a new string that represents the same character sequence as the original string, but with the characters in a standardized form. In this case, the value of normalized will be "médical".
+
+You can also specify the normalization form to be used by passing an optional argument to the normalize() method. For example, you can use normalize("NFD") to normalize the string using the Normalization Form Canonical Decomposition (NFD) algorithm, or normalize("NFC") to normalize the string using the Normalization Form Canonical Composition (NFC) algorithm.
+### 26. The padEnd() method in JavaScript is used to pad a string with a specified character or set of characters so that the string reaches a specified length. 
+Here's an example of how you can use it:
+
+```js
+let str = "Hello";
+let padded = str.padEnd(10, "!");
+
+console.log(padded); //  "Hello!!!!!!".
+
+```
+In this example, the padEnd() method is used to pad the string str with the character ! so that the resulting string reaches a length of 10 characters. The result of this method will be a new string that represents the original string with the specified padding characters added to the end. In this case, the value of padded will be "Hello!!!!!!".
+
+If the original string already exceeds the specified length, then the padEnd() method will not add any padding characters, and the original string will be returned unchanged. If no padding character is specified, then the default padding character is the space character (" ").
+### 27. The padStart() method in JavaScript is used to pad a string with a specified character or set of characters so that the string reaches a specified length. 
+This method adds the padding characters to the start of the string, rather than the end as in the case of padEnd(). 
+Here's an example of how you can use it:
+
+```js
+let str = "Hello";
+let padded = str.padStart(10, "!");
+
+console.log(padded); // "!!!!!Hello"
+```
+In this example, the padStart() method is used to pad the string str with the character ! so that the resulting string reaches a length of 10 characters. The result of this method will be a new string that represents the original string with the specified padding characters added to the start. In this case, the value of padded will be "!!!!!Hello".
+
+If the original string already exceeds the specified length, then the padStart() method will not add any padding characters, and the original string will be returned unchanged. If no padding character is specified, then the default padding character is the space character (" ").
+### 28. The repeat() method in JavaScript is used to repeat a string a specified number of times to create a new string. 
+Here's an example of how you can use it:
+```javascript
+
+let str = "Hello";
+let repeated = str.repeat(3);
+
+console.log(repeated); // "HelloHelloHello"
+```
+In this example, the repeat() method is used to repeat the string str three times to create a new string. The result of this method will be a new string that consists of the original string repeated the specified number of times. In this case, the value of repeated will be "HelloHelloHello".
+
+The repeat() method will accept a non-negative integer as an argument, and if the argument is not a positive integer, it will return an empty string. If the argument is zero, the original string will be returned unchanged.
+### 29. The trim() method in JavaScript is used to remove whitespace characters from the beginning and end of a string. 
+Here's an example of how you can use it:
+
+```javascript
+
+let str = "   Hello World!   ";
+let trimmed = str.trim();
+
+console.log(trimmed); "Hello World!"
+```
+In this example, the trim() method is used to remove any whitespace characters from the beginning and end of the string str. The result of this method will be a new string that has all leading and trailing whitespace characters removed. In this case, the value of trimmed will be "Hello World!".
+
+The trim() method removes all leading and trailing whitespace characters, including spaces, tabs, and line breaks. If you need to remove whitespace characters only from one side of the string, you can use the trimStart() method to remove only leading whitespace characters, or the trimEnd() method to remove only trailing whitespace characters.
+### 30. The trimEnd() method in JavaScript is used to remove whitespace characters from the end of a string. 
+Here's an example of how you can use it:
+
+```javascript
+let str = "   Hello World!   ";
+let trimmed = str.trimEnd();
+
+console.log(trimmed); // " Hello World!"
+```
+In this example, the trimEnd() method is used to remove any whitespace characters from the end of the string str. The result of this method will be a new string that has all trailing whitespace characters removed. In this case, the value of trimmed will be " Hello World!".
+
+The trimEnd() method removes all trailing whitespace characters, including spaces, tabs, and line breaks. If you need to remove whitespace characters only from the start of the string, you can use the trimStart() method. If you need to remove whitespace characters from both the start and end of the string, you can use the trim() method.
+### 31. The trimStart() method in JavaScript is used to remove whitespace characters from the beginning of a string. 
+Here's an example of how you can use it:
+
+```javascript
+let str = "   Hello World!   ";
+let trimmed = str.trimStart();
+
+console.log(trimmed); // "Hello World! "
+```
+In this example, the trimStart() method is used to remove any whitespace characters from the beginning of the string str. The result of this method will be a new string that has all leading whitespace characters removed. In this case, the value of trimmed will be "Hello World! ".
+
+The trimStart() method removes all leading whitespace characters, including spaces, tabs, and line breaks. If you need to remove whitespace characters only from the end of the string, you can use the trimEnd() method. If you need to remove whitespace characters from both the start and end of the string, you can use the trim() method.
