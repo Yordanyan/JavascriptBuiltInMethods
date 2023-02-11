@@ -2,10 +2,9 @@
 Referat about JavaScript Built-In Methods
 
 #### Understanding and Using JavaScript Built-in Methods 
-Built-in methods are available for various data types, including arrays, strings, numbers, and objects.
+Built-in methods are available for various data types, including [arrays](#array-methods), [strings](#string-methods), [numbers](#number-methods), [symbols](#symbol-methods), [bigInts](#bigint-methods), [bools](#boolean-methods) and [objects](#object-methods).
 One of the biggest advantages of using built-in methods is that they are highly optimized, so they are often faster and more efficient than writing custom code.
-In this Referat, we will learn basics and explore the various built-in methods available in JavaScript, including their syntax, usage, and practical examples.
-
+In this Referat, we will learn basics and explore the various built-in methods available in JavaScript, including their syntax, usage, and practical examples. 
 
 ### ***Number Methods***
 ### 1. The Number.isFinite() method determines the passed number is an finite or not. 
