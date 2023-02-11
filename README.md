@@ -3,9 +3,9 @@ Referat about JavaScript Built-In Methods
 
 #### Understanding and Using JavaScript Built-in Methods 
 Built-in methods are available for various data types, including arrays, strings, numbers, and objects.
-There are also methods for mathematical operations and Date formatting.
 One of the biggest advantages of using built-in methods is that they are highly optimized, so they are often faster and more efficient than writing custom code.
 In this Referat, we will learn basics and explore the various built-in methods available in JavaScript, including their syntax, usage, and practical examples.
+
 
 ### ***Number Methods***
 ### 1. The Number.isFinite() method determines the passed number is an finite or not. 
@@ -1480,3 +1480,462 @@ for (let value of iterator) {
 // 3
 ```
 In this example, the values() method is used to get an Array Iterator object for the array arr. The for...of loop is then used to iterate over the values in the array and log them to the console.
+### ***Object Methods***
+### 1. Object.assign() is a method in JavaScript that allows you to copy the values of all enumerable properties of one or more source objects to a target object. 
+The method returns the target object and modifies it in place.
+
+Here's an example of how you could use Object.assign():
+
+```js
+const obj1 = {a: 1, b: 2};
+const obj2 = {c: 3, d: 4};
+const obj3 = Object.assign({}, obj1, obj2);
+console.log(obj3); // {a: 1, b: 2, c: 3, d: 4}
+```
+In the example above, obj1 and obj2 are source objects, and {} is the target object. The values of obj1 and obj2 are copied to the target object obj3, and the resulting object is {a: 1, b: 2, c: 3, d: 4}.
+
+It's worth noting that Object.assign() only performs a shallow copy of the properties and does not copy properties that are not enumerable (e.g., properties with Symbol keys). Additionally, if the source object has a property with the same key as the target object, the value of the target property will be overwritten by the value of the source property.
+### 2. Object.create() is a method in JavaScript that creates an object with the specified prototype object and properties. 
+The Object.create() method allows you to create an object that inherits directly from the passed-in prototype object. This is in contrast to new operator, which creates an object that inherits from the constructor's prototype property.
+
+Here's an example of how you could use Object.create():
+
+```js
+const obj1 = {a: 1, b: 2};
+const obj2 = Object.create(obj1);
+console.log(obj2); // {}
+console.log(obj2.a); // 1
+```
+In the example above, obj1 is the prototype object, and obj2 is the object created using Object.create(). obj2 inherits the properties of obj1, so obj2.a returns 1.
+
+It's important to note that the properties of the prototype object are not copied to the new object. Instead, the new object has a reference to the prototype object. Any changes to the prototype object will be reflected in the new object.
+### 3. Object.defineProperties() is a method in JavaScript that allows you to add new properties or modify existing properties of an object. 
+The method takes two arguments: the object that you want to add properties to, and a descriptor object that defines the properties and their attributes.
+
+Here's an example of how you could use Object.defineProperties():
+
+```js
+const obj = {};
+Object.defineProperties(obj, {
+  prop1: {
+    value: 1,
+    writable: true
+  },
+  prop2: {
+    value: 2,
+    writable: false
+  }
+});
+console.log(obj); // {prop1: 1, prop2: 2}
+obj.prop1 = 3;
+console.log(obj.prop1); // 3
+obj.prop2 = 4;
+console.log(obj.prop2); // 2
+```
+In the example above, we define two properties prop1 and prop2 using Object.defineProperties() and set their attributes such as value and writable. The value attribute specifies the value of the property, and the writable attribute specifies whether the property can be modified or not.
+
+It's worth noting that you can also define other property attributes, such as enumerable, configurable, and get/set accessors, using Object.defineProperties(). This method allows you to fine-tune the behavior of your object properties, making it an important tool for managing objects in JavaScript.
+### 4. Object.defineProperty() is a method in JavaScript that allows you to add a new property or modify an existing property of an object. 
+The method takes three arguments: the object that you want to add a property to, the property name, and a descriptor object that defines the property's attributes.
+
+Here's an example of how you could use Object.defineProperty():
+
+```js
+const obj = {};
+Object.defineProperty(obj, 'prop1', {
+  value: 1,
+  writable: true
+});
+console.log(obj); // {prop1: 1}
+obj.prop1 = 3;
+console.log(obj.prop1); // 3
+```
+In the example above, we define a property prop1 using Object.defineProperty() and set its attributes such as value and writable. The value attribute specifies the value of the property, and the writable attribute specifies whether the property can be modified or not.
+
+It's worth noting that you can also define other property attributes, such as enumerable, configurable, and get/set accessors, using Object.defineProperty(). This method allows you to fine-tune the behavior of your object properties, making it an important tool for managing objects in JavaScript.
+### 5. Object.entries() is a method in JavaScript that returns an array of arrays, where each inner array is a key-value pair from the original object. 
+The returned array has the same iteration order as a for...in loop (the order is determined by the object's prototype chain).
+
+Here's an example of how you could use Object.entries():
+
+```js
+const obj = {a: 1, b: 2};
+console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]
+```
+In the example above, we use Object.entries() to convert the properties of the object obj into an array of arrays. Each inner array represents a key-value pair from the original object.
+
+You can use Object.entries() to perform various operations on objects, such as converting an object to a map, looping through an object, or transforming the object into a new data structure. Additionally, Object.entries() is often used in combination with other array methods, such as map() and forEach(), to perform complex transformations on objects.
+### 6. Object.freeze() is a method in JavaScript that makes an object immutable, meaning its properties cannot be changed or modified. 
+The Object.freeze() method takes an object as its argument and returns the same object, but with its properties and values set to be read-only.
+
+Here's an example of how you could use Object.freeze():
+
+```js
+const obj = {a: 1, b: 2};
+Object.freeze(obj);
+obj.a = 3;
+console.log(obj.a); // 1
+```
+In the example above, we use Object.freeze() to make the object obj immutable. Despite the attempt to change the value of obj.a to 3, the value remains 1 because the object has been frozen and its properties cannot be modified.
+
+It's important to note that Object.freeze() only makes the object and its direct properties read-only. If an object property is an object or an array, its properties can still be modified. To make these properties also read-only, you would need to recursively freeze the object properties.
+
+Object.freeze() is useful when you want to ensure that an object remains unchanged, either for security or data integrity reasons. For instance, you may want to freeze an object that represents the configuration of your application to prevent accidental modification of critical settings.
+### 7. Object.fromEntries() is a method in JavaScript that takes an iterable object, such as an array, and returns a new object created from its key-value pairs. 
+The iterable object must have elements that are arrays with exactly two elements, where the first element is the property key and the second element is the property value.
+
+Here's an example of how you could use Object.fromEntries():
+
+```js
+const entries = [['a', 1], ['b', 2]];
+const obj = Object.fromEntries(entries);
+console.log(obj); // {a: 1, b: 2}
+```
+In the example above, we use Object.fromEntries() to convert the array of arrays entries into an object. The first element of each inner array represents the property key, and the second element represents the property value.
+
+Object.fromEntries() is useful when you need to convert an array of arrays into an object, especially when you want to reverse the operation performed by Object.entries(). You can use Object.fromEntries() in conjunction with other array methods, such as map() and filter(), to perform complex transformations on arrays of arrays.
+### 8. Object.getOwnPropertyDescriptor() is a method in JavaScript that returns the property descriptor for a given property of an object. 
+The property descriptor is an object that describes the attributes of a property, such as its value, writability, enumerability, and configurability.
+
+Here's an example of how you could use Object.getOwnPropertyDescriptor():
+
+```js
+const obj = {a: 1};
+const descriptor = Object.getOwnPropertyDescriptor(obj, 'a');
+console.log(descriptor); // {value: 1, writable: true, enumerable: true, configurable: true}
+```
+In the example above, we use Object.getOwnPropertyDescriptor() to retrieve the property descriptor for the property 'a' of the object obj. The returned descriptor object contains information about the property's value, writability, enumerability, and configurability.
+
+You can use Object.getOwnPropertyDescriptor() to get information about a property, change its attributes, or create new properties with custom attributes. For instance, you may want to use Object.getOwnPropertyDescriptor() to retrieve the value of a property and then modify its writable attribute to make the property read-only.
+
+It's important to note that Object.getOwnPropertyDescriptor() only returns the property descriptor for properties that are directly defined on the object, and not on its prototype chain. If you want to get the property descriptor for a property that is inherited from the prototype, you can use Object.getPrototypeOf() in conjunction with Object.getOwnPropertyDescriptor().
+### 9. Object.getOwnPropertyDescriptors() is a method in JavaScript that returns an object containing all the property descriptors for the properties directly defined on an object. 
+The property descriptors are objects that describe the attributes of a property, such as its value, writability, enumerability, and configurability.
+
+Here's an example of how you could use Object.getOwnPropertyDescriptors():
+
+```js
+const obj = {a: 1, b: 2};
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+console.log(descriptors);
+// {
+//   a: {value: 1, writable: true, enumerable: true, configurable: true},
+//   b: {value: 2, writable: true, enumerable: true, configurable: true}
+// }
+```
+In the example above, we use Object.getOwnPropertyDescriptors() to retrieve all the property descriptors for the properties 'a' and 'b' of the object obj. The returned descriptors object contains all the property descriptors, each one described by an object with information about the property's value, writability, enumerability, and configurability.
+
+You can use Object.getOwnPropertyDescriptors() to get information about all the properties of an object, change their attributes, or create new objects with custom attributes. For instance, you may want to use Object.getOwnPropertyDescriptors() to retrieve all the property descriptors for an object and then use Object.create() to create a new object with the same properties, but with modified attributes.
+
+It's important to note that Object.getOwnPropertyDescriptors() only returns the property descriptors for properties that are directly defined on the object, and not on its prototype chain. If you want to get the property descriptors for properties that are inherited from the prototype, you can use Object.getPrototypeOf() in conjunction with Object.getOwnPropertyDescriptors().
+### 10. Object.getOwnPropertyNames() is a method in JavaScript that returns an array of all the property names (also known as keys) for the properties directly defined on an object.
+
+Here's an example of how you could use Object.getOwnPropertyNames():
+
+```js
+const obj = {a: 1, b: 2};
+const keys = Object.getOwnPropertyNames(obj);
+console.log(keys); // ['a', 'b']
+```
+In the example above, we use Object.getOwnPropertyNames() to retrieve all the property names for the properties 'a' and 'b' of the object obj. The returned keys array contains all the property names, which are strings.
+
+You can use Object.getOwnPropertyNames() to get the names of all the properties of an object, or to iterate over all the properties of an object and perform some action on each one.
+
+It's important to note that Object.getOwnPropertyNames() only returns the property names for properties that are directly defined on the object, and not on its prototype chain. If you want to get the property names for properties that are inherited from the prototype, you can use Object.getPrototypeOf() in conjunction with Object.getOwnPropertyNames().
+### 11. Object.getOwnPropertySymbols() is a method in JavaScript that returns an array of all the property symbols for the properties directly defined on an object. 
+A property symbol is a unique and immutable data type in JavaScript that can be used as an object property or as a key to access properties.
+
+Here's an example of how you could use Object.getOwnPropertySymbols():
+
+```js
+const symbolJ = Symbol('j');
+const symbolS = Symbol('s');
+const obj = {[symbolJ]: 1, [symbolS]: 2};
+const symbols = Object.getOwnPropertySymbols(obj);
+console.log(symbols); // [Symbol(j), Symbol(s)]
+```
+In the example above, we use Object.getOwnPropertySymbols() to retrieve all the property symbols for the properties symbolJ and symbolS of the object obj. The returned symbols array contains all the property symbols, which are unique and immutable data types.
+
+You can use Object.getOwnPropertySymbols() to get the symbols of all the properties of an object, or to iterate over all the properties of an object and perform some action on each one.
+
+It's important to note that Object.getOwnPropertySymbols() only returns the property symbols for properties that are directly defined on the object, and not on its prototype chain. If you want to get the property symbols for properties that are inherited from the prototype, you can use Object.getPrototypeOf() in conjunction with Object.getOwnPropertySymbols().
+### 12. Object.getPrototypeOf() is a method in JavaScript that returns the prototype of an object. 
+In other words, it returns the object that was used as the prototype when the object was created.
+
+Here's an example of how you could use Object.getPrototypeOf():
+
+```js
+const obj = {a: 1, b: 2};
+const prototype = Object.getPrototypeOf(obj);
+console.log(prototype); // {}
+```
+In the example above, we use Object.getPrototypeOf() to retrieve the prototype of the object obj. The returned prototype object is the object that was used as the prototype when obj was created.
+
+You can use Object.getPrototypeOf() to retrieve the prototype of an object and access its properties, or to determine the structure of an object's prototype chain. The prototype chain is the chain of objects that are linked to one another through the prototype property, and it is used to provide inheritance in JavaScript.
+
+It's important to note that Object.getPrototypeOf() only returns the immediate prototype of an object. To traverse the entire prototype chain, you will need to use a loop that repeatedly calls Object.getPrototypeOf() until you reach null
+### 13. Object.hasOwnProperty() is a method in JavaScript that returns a boolean indicating whether an object has the specified property as its own property (as opposed to inheriting it).
+
+Here's an example of how you could use Object.hasOwnProperty():
+
+```js
+const obj = {a: 1, b: 2};
+const hasA = obj.hasOwnProperty('a');
+console.log(hasA); // true
+const hasC = obj.hasOwnProperty('c');
+console.log(hasC); // false
+```
+In the example above, we use Object.hasOwnProperty() to determine if the object obj has the properties 'a' and 'c'. The hasA variable is true because 'a' is a direct property of obj. The hasC variable is false because 'c' is not a direct property of obj.
+
+You can use Object.hasOwnProperty() to check if an object has a particular property, or to iterate over the properties of an object and perform some action on each one.
+
+It's important to note that Object.hasOwnProperty() only returns information about properties that are directly defined on the object, and not on its prototype chain. If you want to determine if an object has a property that is inherited from its prototype chain, you can use 'propertyName' in object instead.
+### 14. Object.is() is a method in JavaScript that determines whether two values are the same value. It is similar to the equality == operator, but it has some important differences:
+
+Object.is() considers -0 and +0 to be different, whereas == considers them to be equal.
+Object.is() considers NaN to be equal to itself, whereas == considers NaN to be not equal to any value, including itself.
+Here's an example of how you could use Object.is():
+
+```js
+const a = -0;
+const b = 0;
+console.log(Object.is(a, b)); // false
+
+const c = NaN;
+const d = NaN;
+console.log(Object.is(c, d)); // true
+```
+In the example above, we use Object.is() to determine if -0 and 0 are the same value, and if NaN is equal to itself. The Object.is() method returns false for the first comparison because -0 and 0 are different values, and returns true for the second comparison because NaN is equal to itself.
+
+You can use Object.is() to compare values in your code, especially when you want to compare values for equality more strictly than the == operator.
+### 15. Object.isExtensible() is a method in JavaScript that determines if an object is extensible, i.e., if new properties can be added to it. 
+An object is extensible if it can be modified and its properties can be changed.
+
+Here's an example of how you could use Object.isExtensible():
+
+```js
+const obj = {};
+console.log(Object.isExtensible(obj)); // true
+
+Object.preventExtensions(obj);
+console.log(Object.isExtensible(obj)); // false
+```
+In the example above, we first create an object obj and log the result of calling Object.isExtensible(obj). The result is true, which means that obj is extensible. Then we call Object.preventExtensions(obj) to make obj non-extensible. Finally, we log the result of calling Object.isExtensible(obj) again. The result is now false, which means that obj is no longer extensible.
+
+You can use Object.isExtensible() to determine if an object can be modified, or to enforce the immutability of an object by making it non-extensible.
+### 16. Object.isFrozen() is a method in JavaScript that determines if an object is frozen, i.e., if its properties cannot be changed. 
+An object is considered frozen if all its properties are non-configurable and their values cannot be changed.
+
+Here's an example of how you could use Object.isFrozen():
+
+```js
+const obj = {};
+console.log(Object.isFrozen(obj)); // false
+
+Object.freeze(obj);
+console.log(Object.isFrozen(obj)); // true
+```
+In the example above, we first create an object obj and log the result of calling Object.isFrozen(obj). The result is false, which means that obj is not frozen. Then we call Object.freeze(obj) to freeze obj. Finally, we log the result of calling Object.isFrozen(obj) again. The result is now true, which means that obj is now frozen and its properties cannot be changed.
+
+You can use Object.isFrozen() to determine if an object is frozen, or to enforce the immutability of an object by freezing it.
+### 17. Object.prototype.isPrototypeOf() is a method in JavaScript that determines if an object is in the prototype chain of another object. 
+It returns true if the specified object is in the prototype chain of the object on which the method is called, and false otherwise.
+
+Here's an example of how you could use Object.prototype.isPrototypeOf():
+
+```js
+const obj1 = {};
+const obj2 = Object.create(obj1);
+console.log(obj1.isPrototypeOf(obj2)); // true
+```
+In the example above, we first create an object obj1, and then create another object obj2 using Object.create(obj1). This sets obj1 as the prototype of obj2. Then we call obj1.isPrototypeOf(obj2) to determine if obj1 is in the prototype chain of obj2. The result is true, which means that obj1 is indeed in the prototype chain of obj2.
+
+You can use Object.prototype.isPrototypeOf() to determine the prototype chain of an object and the relationships between objects in your code.
+### 18. Object.isSealed() is a method in JavaScript that determines if an object is sealed, i.e., if its properties cannot be added or removed, and if its existing properties cannot be reconfigured. 
+An object is considered sealed if all its properties are non-configurable and their values cannot be changed.
+
+Here's an example of how you could use Object.isSealed():
+
+```js
+const obj = {};
+console.log(Object.isSealed(obj)); // false
+
+Object.seal(obj);
+console.log(Object.isSealed(obj)); // true
+```
+In the example above, we first create an object obj and log the result of calling Object.isSealed(obj). The result is false, which means that obj is not sealed. Then we call Object.seal(obj) to seal obj. Finally, we log the result of calling Object.isSealed(obj) again. The result is now true, which means that obj is now sealed and its properties cannot be added or removed, and their values cannot be changed.
+
+You can use Object.isSealed() to determine if an object is sealed, or to enforce the immutability of an object by sealing it.
+### 19. Object.keys() is a method in JavaScript that returns an array of the own enumerable property names of an object. 
+It only returns the names of the properties that are directly on the object and not its prototype.
+
+Here's an example of how you could use Object.keys():
+
+```js
+const obj = { name: 'John', age: 30, city: 'New York' };
+console.log(Object.keys(obj)); // ['name', 'age', 'city']
+```
+In the example above, we create an object obj with properties name, age, and city. Then we log the result of calling Object.keys(obj), which returns an array of the property names of obj. The result is ['name', 'age', 'city'], which means that these are the properties directly on the object obj.
+
+You can use Object.keys() to get an array of the property names of an object, or to iterate over the properties of an object.
+### 20. Object.preventExtensions() is a method in JavaScript that makes an object non-extensible, which means that new properties cannot be added to the object. 
+Once an object is made non-extensible, it cannot be made extensible again.
+
+Here's an example of how you could use Object.preventExtensions():
+
+```js
+const obj = { name: 'John', age: 30, city: 'New York' };
+console.log(Object.isExtensible(obj)); // true
+
+Object.preventExtensions(obj);
+console.log(Object.isExtensible(obj)); // false
+```
+In the example above, we create an object obj with properties name, age, and city. Then we log the result of calling Object.isExtensible(obj), which returns true, which means that obj is extensible. Then we call Object.preventExtensions(obj) to make obj non-extensible. Finally, we log the result of calling Object.isExtensible(obj) again, which returns false, which means that obj is now non-extensible and new properties cannot be added to it.
+
+You can use Object.preventExtensions() to make an object non-extensible and prevent new properties from being added to it. This can be useful in situations where you want to enforce the immutability of an object and prevent unintended modifications.
+### 21. Object.prototype.propertyIsEnumerable() is a method in JavaScript that determines if an enumerable property of an object can be enumerated (i.e., included in a for...in loop or an Object.keys() call).
+
+Here's an example of how you could use propertyIsEnumerable():
+
+```js
+const obj = { name: 'John', age: 30, city: 'New York' };
+console.log(obj.propertyIsEnumerable('name')); // true
+console.log(obj.propertyIsEnumerable('toString')); // false
+```
+In the example above, we create an object obj with properties name, age, and city. Then we log the result of calling obj.propertyIsEnumerable('name'), which returns true, because the property name is enumerable. Then we log the result of calling obj.propertyIsEnumerable('toString'), which returns false, because the property toString is not enumerable.
+
+You can use propertyIsEnumerable() to check if a property of an object is enumerable or not. This can be useful in situations where you want to filter the properties of an object that you want to enumerate or include in a loop or a list.
+### 22. Object.seal() is a method in JavaScript that seals an object, making it non-extensible and preventing new properties from being added to it. 
+However, the values of existing properties can still be changed.
+
+Here's an example of how you could use Object.seal():
+
+```js
+const obj = { name: 'John', age: 30, city: 'New York' };
+Object.seal(obj);
+obj.age = 35;
+obj.newProp = 'hello';
+console.log(obj.newProp); // undefined
+console.log(Object.isSealed(obj)); // true
+```
+In the example above, we create an object obj with properties name, age, and city. Then we call Object.seal(obj) to seal the object, making it non-extensible. Next, we change the value of the property age to 35. This change is allowed because Object.seal() only makes the object non-extensible, not read-only. Finally, we try to add a new property newProp to the object, but it is not allowed because the object is sealed. We then use Object.isSealed() to confirm that the object is indeed sealed.
+
+You can use Object.seal() to create objects that are not extensible, but still allow changes to the values of existing properties. This can be useful in situations where you want to prevent the structure of an object from changing, but still allow modifications to its values.
+### 23. Object.setPrototypeOf() is a method in JavaScript that allows you to set the prototype of an object to a specified object or null. 
+The prototype is the object from which the current object inherits its properties.
+
+Here's an example of how you could use Object.setPrototypeOf():
+
+```js
+const obj1 = { name: 'John', age: 30, city: 'New York' };
+const obj2 = { address: '123 Main St.', state: 'NY' };
+Object.setPrototypeOf(obj1, obj2);
+console.log(obj1.address); // 123 Main St.
+```
+In the example above, we create two objects obj1 and obj2. We then use Object.setPrototypeOf(obj1, obj2) to set the prototype of obj1 to obj2. Now obj1 inherits the properties of obj2, so we can access the property address of obj2 through obj1.
+
+You can use Object.setPrototypeOf() to specify the prototype of an object, allowing you to reuse properties from other objects and create objects that inherit from other objects.
+### 24. Object.prototype.toLocaleString() is a method in JavaScript that returns a string representation of an object, formatted according to the locale-specific conventions. 
+The method is inherited by all objects and can be overridden by specific object types to provide locale-specific string representations.
+
+Here's an example of how you could use toLocaleString():
+
+```js
+const date = new Date();
+console.log(date.toLocaleString()); // outputs the current date and time in a locale-specific format
+```
+In the example above, we create a Date object and use its toLocaleString() method to get a string representation of the date and time, formatted according to the locale-specific conventions.
+
+You can use toLocaleString() to format values such as dates, numbers, and currency amounts in a locale-specific way, making it easier to display the values in a way that is familiar and appropriate for the user's locale.
+### 25. Object.prototype.toString() is a method in JavaScript that returns a string representation of an object. 
+The method is inherited by all objects and can be overridden by specific object types to provide their own string representations.
+
+Here's an example of how you could use toString():
+
+```js
+const obj = { a: 1, b: 2 };
+console.log(obj.toString()); // outputs "[object Object]"
+```
+In the example above, we create an object and use its toString() method to get a string representation of the object. By default, toString() returns the string "[object Object]" for objects, but you can override the method to provide a custom string representation.
+
+You can use toString() to get a string representation of an object for debugging or logging purposes. It can also be useful when you need to convert an object to a string for other purposes, such as serializing the object for storage or transmission.
+### 26. Object.prototype.valueOf() is a method in JavaScript that returns the primitive value of an object. 
+The method is inherited by all objects and can be overridden by specific object types to provide their own primitive values.
+
+Here's an example of how you could use valueOf():
+
+```js
+const obj = { a: 1, b: 2 };
+console.log(obj.valueOf()); // outputs Object { a: 1, b: 2 }
+```
+In the example above, we create an object and use its valueOf() method to get its primitive value. By default, valueOf() returns the object itself, but you can override the method to provide a custom primitive value.
+
+You can use valueOf() to get the primitive value of an object for comparison or manipulation purposes. For example, if you have an object that represents a date, you could use valueOf() to get the underlying timestamp value of the date.
+### 27. Object.values() is a method in JavaScript that returns an array of all the enumerable property values of an object. 
+This method returns an array in the same order as that obtained by looping over the properties of the object manually.
+
+Here's an example of how you could use Object.values():
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+console.log(Object.values(obj)); // outputs [1, 2, 3]
+```
+In the example above, we create an object with properties a, b, and c, and use the Object.values() method to get an array of its property values. The Object.values() method returns an array of values [1, 2, 3] in the order they were defined in the object.
+
+You can use Object.values() to iterate over the values of an object, or to get an array of values for manipulation or analysis purposes. It is particularly useful when you want to perform operations on all values of an object, without having to manually loop over its properties.
+### ***BigInt Methods***
+### 1. BigInt.asIntN() is a method in JavaScript that returns a BigInt value with a specified number of bits, where the value is represented in two's complement notation. 
+This method is used to perform bitwise operations on BigInt values and can be used to limit the number of bits used to represent a value.
+
+Here's an example of how you could use BigInt.asIntN():
+
+```js
+const num = BigInt(0x123456789abcdef012345678n);
+console.log(num.asIntN(64)); // outputs 0x123456789abcdef012345678n
+console.log(num.asIntN(32)); // outputs 0x56789abcn
+```
+In the example above, we create a BigInt value num and use the BigInt.asIntN() method to specify the number of bits used to represent the value. In the first case, we specify 64 bits, so the output is the same as the original value. In the second case, we specify 32 bits, so the output is the lower 32 bits of the original value.
+
+You can use BigInt.asIntN() to control the number of bits used to represent a BigInt value, especially when you need to perform bitwise operations or want to limit the number of bits used to reduce memory usage.
+### 2. BigInt.asUintN() is a method in JavaScript that returns a BigInt value with a specified number of bits, where the value is represented in unsigned integer notation. 
+This method is used to perform bitwise operations on BigInt values and can be used to limit the number of bits used to represent a value.
+
+Here's an example of how you could use BigInt.asUintN():
+
+```js
+const num = BigInt(0x123456789abcdef012345678n);
+console.log(num.asUintN(64)); // outputs 0x123456789abcdef012345678n
+console.log(num.asUintN(32)); // outputs 0x56789abc
+```
+In the example above, we create a BigInt value num and use the BigInt.asUintN() method to specify the number of bits used to represent the value. In the first case, we specify 64 bits, so the output is the same as the original value. In the second case, we specify 32 bits, so the output is the lower 32 bits of the original value, represented as an unsigned integer.
+
+You can use BigInt.asUintN() to control the number of bits used to represent a BigInt value, especially when you need to perform bitwise operations or want to limit the number of bits used to reduce memory usage.
+### ***Symbol Methods***
+### 1. Symbol.for() is a method in JavaScript that creates or retrieves a symbol with a specified key. 
+The key is used to identify the symbol, and symbols with the same key will refer to the same value. This makes Symbol.for() useful for creating unique, shared symbols across different parts of your code.
+
+Here's an example of how you could use Symbol.for():
+
+```js
+const key = 'my_symbol';
+const symbol1 = Symbol.for(key);
+const symbol2 = Symbol.for(key);
+console.log(symbol1 === symbol2); // true
+```
+In the example above, we create two symbols with the same key 'my_symbol' using the Symbol.for() method. The two symbols refer to the same value, so the comparison symbol1 === symbol2 returns true.
+
+You can use Symbol.for() to create unique, shared symbols that can be used as property keys or for other purposes where you need a unique, shared identifier. This can be useful for avoiding naming conflicts and for implementing advanced features, such as private properties in JavaScript classes.
+### 2. Symbol.keyFor() is a method in JavaScript that returns the key of a symbol. 
+The key is a string that was used to create the symbol with the Symbol.for() method.
+
+Here's an example of how you could use Symbol.keyFor():
+
+```js
+const key = 'my_symbol';
+const symbol = Symbol.for(key);
+const symbolKey = Symbol.keyFor(symbol);
+console.log(symbolKey); // 'my_symbol'
+```
+In the example above, we create a symbol using the Symbol.for() method with the key 'my_symbol'. Then, we use the Symbol.keyFor() method to retrieve the key of the symbol. The Symbol.keyFor() method returns the key 'my_symbol', which is the same key that was used to create the symbol.
+
+You can use Symbol.keyFor() to retrieve the key of a symbol created with Symbol.for(). This can be useful for debugging or for logging purposes, or when you need to retrieve the key of a symbol for some other reason.
