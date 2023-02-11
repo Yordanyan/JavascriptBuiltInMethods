@@ -742,3 +742,741 @@ console.log(trimmed); // "Hello World! "
 In this example, the trimStart() method is used to remove any whitespace characters from the beginning of the string str. The result of this method will be a new string that has all leading whitespace characters removed. In this case, the value of trimmed will be "Hello World! ".
 
 The trimStart() method removes all leading whitespace characters, including spaces, tabs, and line breaks. If you need to remove whitespace characters only from the end of the string, you can use the trimEnd() method. If you need to remove whitespace characters from both the start and end of the string, you can use the trim() method.
+### ***Array Methods***
+### 1. The Array.prototype.at() method does not exist in JavaScript. 
+JavaScript does have an Array.prototype.indexOf() method that you can use to find the index of an element in an array, but this method returns -1 if the element is not found in the array.
+```js
+let arr = [1, 2, 3, 4, 5];
+let element = arr.at(-1);
+console.log(element); // Output: 5
+```
+
+If you're looking for a way to access an element at a specific index in an array, you can simply use square bracket notation, like this:
+```js
+let arr = [1, 2, 3, 4, 5];
+let element = arr[4];
+console.log(element); // Output: 3
+```
+### 2. The Array.prototype.concat() method in JavaScript is used to merge two or more arrays into a single array. 
+The method does not modify the original arrays but instead returns a new array that contains the elements from the original arrays.
+
+Here's an example of how you can use Array.prototype.concat():
+
+```javascript
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let newArray = arr1.concat(arr2);
+console.log(newArray); // Output: [1, 2, 3, 4, 5, 6]
+```
+You can also concatenate more than two arrays by passing multiple arrays as arguments to concat(). For example:
+
+```javascript
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let arr3 = [7, 8, 9];
+let newArray = arr1.concat(arr2, arr3);
+console.log(newArray); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+### 3. The Array.prototype.copyWithin() method in JavaScript is used to copy a sequence of elements within an array to another location in the same array. 
+The method modifies the original array and does not create a new array.
+
+Here's the basic syntax for using Array.prototype.copyWithin():
+
+```js
+array.copyWithin(target, start[, end]);
+```
+target: The index at which to copy the elements to.
+start: The index at which to start copying elements from.
+end: (optional) The index at which to end copying elements (defaults to array.length).
+
+Here's an example of how you can use Array.prototype.copyWithin():
+```js
+let arr = [1, 2, 3, 4, 5];
+arr.copyWithin(0, 3);
+console.log(arr); // Output: [4, 5, 3, 4, 5]
+```
+In this example, the elements at indices 3 and 4 (4 and 5) are copied to the beginning of the array (indices 0 and 1), overwriting the existing elements.
+### 4. The Array.prototype.entries() method in JavaScript returns a new Array Iterator object that contains the key/value pairs for each index in the array. 
+This can be useful for iterating over an array, as it provides both the index and value of each element in the array.
+
+Here's an example of how you can use Array.prototype.entries():
+
+```js
+let arr = [1, 2, 3, 4, 5];
+let iterator = arr.entries();
+
+for (let [index, value] of iterator) {
+  console.log(index, value);
+}
+
+// Output:
+// 0 1
+// 1 2
+// 2 3
+// 3 4
+// 4 5
+```
+In this example, the entries() method returns an iterator object that we can use in a for...of loop to iterate over the elements in the array. The loop destructures each iteration into a key/value pair, where the key is the index and the value is the corresponding element in the array.
+### 5. The Array.prototype.every() method in JavaScript is used to test whether all elements in an array pass a test specified by a provided function. 
+The method returns a Boolean value indicating whether all elements pass the test.
+
+Here's the basic syntax for using Array.prototype.every():
+
+```js
+array.every(callback(element[, index[, array]])[, thisArg]);
+```
+callback: A function to be run for each element in the array. It should return true or false.
+thisArg: (optional) An object to be used as this when executing the callback function.
+Here's an example of how you can use Array.prototype.every():
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let result = arr.every(value => value >= 1);
+console.log(result); // Output: true
+```
+In this example, the every() method tests whether all elements in the arr array are greater than or equal to 1. Since all elements in the array pass this test, the method returns true.
+### 6. The Array.prototype.fill() method in JavaScript is used to fill all the elements of an array with a static value, from a start index to an end index. 
+The method modifies the original array and does not create a new array.
+
+Here's the basic syntax for using Array.prototype.fill():
+
+```js
+array.fill(value[, start[, end]]);
+```
+value: The value to fill the array with.
+start: (optional) The index at which to start filling the array (defaults to 0).
+end: (optional) The index at which to end filling the array (defaults to array.length).
+Here's an example of how you can use Array.prototype.fill():
+
+```js
+let arr = [1, 2, 3, 4, 5];
+arr.fill(0, 1, 3);
+console.log(arr); // Output: [1, 0, 0, 4, 5]
+```
+In this example, the fill() method fills the elements in the arr array with the value 0 from index 1 to index 3 (inclusive).
+### 7. The Array.prototype.filter() method in JavaScript is used to create a new array with all elements that pass a test specified by a provided function. 
+The method does not modify the original array.
+
+Here's the basic syntax for using Array.prototype.filter():
+
+```js
+array.filter(callback(element[, index[, array]])[, thisArg]);
+```
+callback: A function to be run for each element in the array. It should return true or false.
+thisArg: (optional) An object to be used as this when executing the callback function.
+Here's an example of how you can use Array.prototype.filter():
+
+```javascript
+
+let arr = [1, 2, 3, 4, 5];
+let filteredArr = arr.filter(value => value % 2 === 0);
+console.log(filteredArr); // Output: [2, 4]
+```
+In this example, the filter() method creates a new array filteredArr containing only the elements in the arr array that are even (i.e., whose remainder when divided by 2 is 0). The method does not modify the original arr array.
+### 8. The Array.prototype.find() method in JavaScript is used to return the value of the first element in an array that satisfies a provided testing function. 
+The method returns undefined if no element passes the test.
+
+Here's the basic syntax for using Array.prototype.find():
+
+```js
+array.find(callback(element[, index[, array]])[, thisArg]);
+```
+callback: A function to be run for each element in the array. It should return true or false.
+thisArg: (optional) An object to be used as this when executing the callback function.
+Here's an example of how you can use Array.prototype.find():
+
+```js
+let arr = [1, 2, 3, 4, 5];
+let result = arr.find(value => value > 3);
+console.log(result); // Output: 4
+```
+In this example, the find() method returns the first value in the arr array that is greater than 3. Since the first such value is 4, the method returns 4. If no element in the array passes the test, the method returns undefined.
+### 9. The Array.prototype.findIndex() method in JavaScript is used to return the index of the first element in an array that satisfies a provided testing function. 
+The method returns -1 if no element passes the test.
+
+Here's the basic syntax for using Array.prototype.findIndex():
+```js
+array.findIndex(callback(element[, index[, array]])[, thisArg]);
+```
+callback: A function to be run for each element in the array. It should return true or false.
+thisArg: (optional) An object to be used as this when executing the callback function.
+Here's an example of how you can use Array.prototype.findIndex():
+
+```js
+let arr = [1, 2, 3, 4, 5];
+let result = arr.findIndex(value => value > 3);
+console.log(result); // Output: 3
+```
+In this example, the findIndex() method returns the index of the first value in the arr array that is greater than 3. Since the first such value is 4, the method returns 3. If no element in the array passes the test, the method returns -1.
+### 10. The Array.prototype.findLastIndex() method is a built-in JavaScript method that returns the last index of the last element in the array that satisfies the provided testing function.
+
+Here is the syntax for using Array.prototype.findLastIndex():
+
+```js
+array.findLastIndex(callback(element[, index[, array]])[, thisArg])
+```
+callback: A function that is called for each element in the array, taking the following arguments: element, index, and array. The function should return true if the element satisfies the condition and false otherwise.
+thisArg (optional): Object to use as this when executing callback.
+The method returns the index of the first element that satisfies the provided testing function, or -1 if none of the elements in the array pass the test.
+
+Here is an example of using Array.prototype.findLastIndex():
+```js
+let arr = [5, 12, 8, 130, 44];
+
+let result = arr.findLastIndex(element => element >= 12);
+
+console.log(result); // 3
+```
+In this example, the findLastIndex() method returns the index of the last element in the array that is greater than or equal to 12, which is 3.
+### 11. The Array.prototype.flat() method is a built-in JavaScript method that creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+Here is the syntax for using Array.prototype.flat():
+
+```js
+array.flat([depth])
+```
+depth (optional): The maximum recursion depth. Default value is 1.
+The method returns a new array with all the sub-array elements concatenated into it. If the depth argument is provided, it will only flatten the array to that depth.
+
+Here is an example of using Array.prototype.flat():
+
+```js
+let arr = [1, 2, [3, 4, [5, 6]]];
+
+let result = arr.flat();
+
+console.log(result); // [1, 2, 3, 4, [5, 6]]
+
+result = arr.flat(2);
+
+console.log(result); // [1, 2, 3, 4, 5, 6]
+```
+In this example, the flat() method flattens the array arr to a depth of 1 in the first call, resulting in [1, 2, 3, 4, [5, 6]]. In the second call, it flattens the array to a depth of 2, resulting in [1, 2, 3, 4, 5, 6].
+### 12. The Array.prototype.flatMap() method is a built-in JavaScript method that maps each element using a mapping function, then flattens the result into a new array. 
+It is essentially a combination of the map() and flat() methods.
+
+Here is the syntax for using Array.prototype.flatMap():
+
+```js
+array.flatMap(callback(element[, index[, array]])[, thisArg])
+```
+callback: A function that is called for each element in the array, taking the following arguments: element, index, and array. The function should return an array or a value that will be flattened.
+thisArg (optional): Object to use as this when executing callback.
+The method returns a new array with the results of calling a provided function on every element in the calling array.
+
+Here is an example of using Array.prototype.flatMap():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let result = arr.flatMap(x => [x * 2]);
+
+console.log(result); // [2, 4, 6, 8]
+```
+In this example, the flatMap() method maps each element in the array arr using the mapping function x => [x * 2], which returns an array of doubled values. The result of the flatMap() method is then a flattened array of these doubled values.
+### 13. The Array.prototype.forEach() method is a built-in JavaScript method that executes a provided function once for each array element.
+
+Here is the syntax for using Array.prototype.forEach():
+
+```js
+array.forEach(callback(element[, index[, array]])[, thisArg])
+```
+callback: A function that is called for each element in the array, taking the following arguments: element, index, and array. The function should perform the desired operation for each element.
+thisArg (optional): Object to use as this when executing callback.
+The method does not return a value.
+
+Here is an example of using Array.prototype.forEach():
+```js
+let arr = [1, 2, 3, 4];
+
+arr.forEach(function(element, index, array) {
+  console.log(element, index);
+});
+
+// Output:
+// 1 0
+// 2 1
+// 3 2
+// 4 3
+```
+In this example, the forEach() method executes the provided function (element, index, array) => console.log(element, index) for each element in the array arr. The function logs the element and its index to the console.
+### 14. The Array.from() method is a built-in JavaScript method that creates a new, shallow-copied Array instance from an array-like or iterable object.
+
+Here is the syntax for using Array.from():
+
+```js
+Array.from(arrayLike[, mapFn[, thisArg]])
+```
+arrayLike: An object to convert to an array.
+mapFn (optional): Map function to call on every element of the array.
+thisArg (optional): Object to use as this when executing mapFn.
+The method returns a new Array instance with the elements of arrayLike.
+
+Here is an example of using Array.from():
+
+```js
+let arrayLike = {0: 'a', 1: 'b', 2: 'c', length: 3};
+
+let result = Array.from(arrayLike);
+
+console.log(result); // ['a', 'b', 'c']
+```
+In this example, Array.from() is used to convert the arrayLike object to an array. The result of Array.from() is a new array instance with the elements of arrayLike.
+### 14. The Array.prototype.includes() method is a built-in JavaScript method that determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+Here is the syntax for using Array.prototype.includes():
+
+```js
+array.includes(valueToFind[, fromIndex])
+```
+valueToFind: The value to search for.
+fromIndex (optional): The position in the array at which to start searching for valueToFind.
+The method returns a boolean value indicating whether the value was found in the array.
+
+Here is an example of using Array.prototype.includes():
+
+```js
+let arr = [1, 2, 3, 4];
+
+console.log(arr.includes(3)); // true
+console.log(arr.includes(5)); // false
+```
+In this example, the includes() method is used to determine if the value 3 is present in the array arr. The result of includes() is true, indicating that the value was found in the array. The includes() method is also used to determine if the value 5 is present in the array arr. The result of includes() is false, indicating that the value was not found in the array.
+### 15. The Array.prototype.indexOf() method is a built-in JavaScript method that returns the first index at which a given element can be found in the array, or -1 if it is not present.
+
+Here is the syntax for using Array.prototype.indexOf():
+
+```js
+array.indexOf(searchElement[, fromIndex])
+```
+searchElement: The value to search for.
+fromIndex (optional): The position in the array at which to start searching for searchElement.
+The method returns the first index at which searchElement can be found in the array, or -1 if it is not present.
+
+Here is an example of using Array.prototype.indexOf():
+
+```js
+let arr = [1, 2, 3, 4];
+
+console.log(arr.indexOf(3)); // 2
+console.log(arr.indexOf(5)); // -1
+```
+In this example, the indexOf() method is used to determine the first index at which the value 3 can be found in the array arr. The result of indexOf() is 2, indicating that the value was found at the second position in the array. The indexOf() method is also used to determine the first index at which the value 5 can be found in the array arr. The result of indexOf() is -1, indicating that the value was not found in the array.
+### 16. The Array.isArray() method is a built-in JavaScript method that determines whether an object is an Array.
+
+Here is the syntax for using Array.isArray():
+
+```js
+Array.isArray(obj)
+```
+obj: The object to be tested.
+The method returns true if obj is an Array, and false otherwise.
+
+Here is an example of using Array.isArray():
+```js
+let arr = [1, 2, 3, 4];
+
+console.log(Array.isArray(arr)); // true
+console.log(Array.isArray({})); // false
+```
+In this example, the Array.isArray() method is used to determine if arr is an Array. The result of Array.isArray() is true, indicating that arr is indeed an Array. The Array.isArray() method is also used to determine if {} is an Array. The result of Array.isArray() is false, indicating that {} is not an Array.
+### 17. The Array.prototype.join() method is a built-in JavaScript method that creates and returns a string by concatenating all the elements of an array with a specified separator.
+
+Here is the syntax for using Array.prototype.join():
+
+```js
+array.join([separator])
+```
+separator (optional): The separator to be used between the elements of the array. If this argument is not provided, the elements of the array are separated by a comma.
+The method returns a string that is created by concatenating all the elements of the array with the specified separator.
+
+Here is an example of using Array.prototype.join():
+
+```js
+let arr = [1, 2, 3, 4];
+
+console.log(arr.join()); // "1,2,3,4"
+console.log(arr.join("-")); // "1-2-3-4"
+```
+In this example, the join() method is used to create and return a string by concatenating all the elements of the array arr. The first call to join() returns a string with the elements of arr separated by commas, while the second call to join() returns a string with the elements of arr separated by hyphens.
+### 18. The Array.prototype.keys() method is a built-in JavaScript method that returns a new Array Iterator object that contains the keys for each index in the array.
+
+Here is the syntax for using Array.prototype.keys():
+
+```js
+array.keys()
+```
+The method returns a new Array Iterator object that contains the keys (indices) for each element in the array.
+
+Here is an example of using Array.prototype.keys():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let keys = arr.keys();
+
+console.log(keys.next()); // { value: 0, done: false }
+console.log(keys.next()); // { value: 1, done: false }
+console.log(keys.next()); // { value: 2, done: false }
+console.log(keys.next()); // { value: 3, done: false }
+console.log(keys.next()); // { value: undefined, done: true }
+```
+In this example, the keys() method is used to return a new Array Iterator object that contains the keys (indices) for each element in the array arr. The next() method is then called on the Array Iterator object to retrieve the keys (indices) one at a time. The next() method returns an object with two properties: value and done. The value property contains the current key (index), and the done property indicates whether all the keys have been retrieved. When all the keys have been retrieved, the next() method returns an object with value set to undefined and done set to true.
+### 19. The Array.prototype.lastIndexOf() method is a built-in JavaScript method that returns the last index at which a given element can be found in an array, or -1 if it is not present. 
+The search starts from the end of the array and goes towards the beginning.
+
+Here is the syntax for using Array.prototype.lastIndexOf():
+
+```js
+array.lastIndexOf(searchElement[, fromIndex])
+```
+searchElement: The element to be searched for in the array.
+fromIndex (optional): The index at which to start searching backwards in the array. If fromIndex is greater than or equal to the length of the array, the entire array will be searched. If fromIndex is negative, it will be treated as array.length + fromIndex where array.length is the length of the array. The default value of fromIndex is array.length - 1.
+The method returns the last index at which searchElement can be found in the array, or -1 if it is not present.
+
+Here is an example of using Array.prototype.lastIndexOf():
+
+```js
+let arr = [1, 2, 3, 4, 2, 1];
+
+console.log(arr.lastIndexOf(2)); // 4
+console.log(arr.lastIndexOf(2, 3)); // 1
+console.log(arr.lastIndexOf(5)); // -1
+```
+In this example, the lastIndexOf() method is used to search for the element 2 in the array arr. The first call to lastIndexOf() returns 4, which is the last index at which 2 can be found in arr. The second call to lastIndexOf() returns 1, which is the last index at which 2 can be found in arr before the index 3. The third call to lastIndexOf() returns -1, which indicates that the element 5 is not present in arr.
+### 20. The Array.prototype.map() method is a built-in JavaScript method that creates a new array with the results of calling a provided function on every element in the calling array.
+
+Here is the syntax for using Array.prototype.map():
+
+```js
+array.map(callback(element[, index[, array]])[, thisArg])
+```
+callback: A function that is called for each element in the array, taking the following arguments: element, index, and array. The function should perform the desired operation for each element and return the resulting value.
+thisArg (optional): Object to use as this when executing callback.
+The method returns a new array with the results of calling callback on every element in the original array.
+
+Here is an example of using Array.prototype.map():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let doubleArr = arr.map(function(element) {
+  return element * 2;
+});
+
+console.log(doubleArr); // [2, 4, 6, 8]
+```
+In this example, the map() method is used to double each element in the array arr. The provided function (element) => element * 2 is called for each element in arr and the resulting values are collected into a new array doubleArr. The resulting doubleArr is [2, 4, 6, 8], which is the original arr with each element doubled.
+### 21. The Array.of() method is a built-in JavaScript method that creates a new array instance with a variable number of arguments, regardless of number or type of the arguments.
+
+Here is the syntax for using Array.of():
+
+```js
+Array.of(element0[, element1[, ...[, elementN]]])
+```
+element0, element1, ..., elementN: Elements to be passed as arguments to the constructor and make up the new array.
+The method returns a new array instance with the given elements.
+
+Here is an example of using Array.of():
+
+```js
+let arr = Array.of(1, 2, 3, 4);
+console.log(arr); // [1, 2, 3, 4]
+```
+In this example, the Array.of() method is used to create a new array instance with the elements 1, 2, 3, 4. The resulting arr is [1, 2, 3, 4].
+
+Note that Array.of() is often used instead of the Array constructor because Array.of() guarantees that the resulting array will have the desired number of elements, whereas the Array constructor can have unexpected behavior when passing a single numeric argument. 
+### 22. The Array.prototype.pop() method is a built-in JavaScript method that removes the last element from an array and returns that element.
+
+Here is the syntax for using Array.prototype.pop():
+
+```js
+array.pop()
+```
+The method returns the removed element. If the array is empty, undefined is returned.
+
+Here is an example of using Array.prototype.pop():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let popped = arr.pop();
+console.log(arr); // [1, 2, 3]
+console.log(popped); // 4
+```
+In this example, the pop() method is used to remove the last element from the array arr. The resulting arr is [1, 2, 3] and the removed element, 4, is returned and stored in the variable popped.
+### 23. The Array.prototype.push() method is a built-in JavaScript method that adds one or more elements to the end of an array and returns the new length of the array.
+
+Here is the syntax for using Array.prototype.push():
+
+```js
+array.push(element1[, element2[, ...[, elementX]]])
+```
+element1, element2, ..., elementX: Elements to be added to the end of the array.
+The method returns the new length of the array.
+
+Here is an example of using Array.prototype.push():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let newLength = arr.push(5, 6);
+console.log(arr); // [1, 2, 3, 4, 5, 6]
+console.log(newLength); // 6
+```
+In this example, the push() method is used to add the elements 5 and 6 to the end of the array arr. The resulting arr is [1, 2, 3, 4, 5, 6] and the new length of the array, 6, is returned and stored in the variable newLength.
+### 24. The Array.prototype.reduce() method is a built-in JavaScript method that applies a function against an accumulator and each element in the array (from left to right) to reduce the array to a single value.
+
+Here is the syntax for using Array.prototype.reduce():
+
+```js
+array.reduce(callback(accumulator, currentValue[, currentIndex[, array]])[, initialValue])
+```
+callback: Function to execute on each value in the array, taking four arguments:
+accumulator: The accumulator accumulates the callback's return values. It is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied (see below).
+currentValue: The current element being processed in the array.
+currentIndex (optional): The index of the current element being processed in the array.
+array (optional): The array reduce() was called upon.
+initialValue (optional): Object to use as the first argument to the first call of the callback.
+The method returns the reduced value.
+
+Here is an example of using Array.prototype.reduce():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let sum = arr.reduce(function(accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+console.log(sum); // 10
+```
+In this example, the reduce() method is used to calculate the sum of the elements in the array arr. The provided function (accumulator, currentValue) => accumulator + currentValue is executed for each element in the array, starting with an accumulator value of 0, to calculate the sum of the elements. The reduced value, 10, is returned and stored in the variable sum.
+### 25. The Array.prototype.reduceRight() method is similar to the Array.prototype.reduce() method, with the difference that it processes the elements of the array from right to left.
+
+Here is the syntax for using Array.prototype.reduceRight():
+
+```js
+array.reduceRight(callback(accumulator, currentValue[, currentIndex[, array]])[, initialValue])
+```
+callback: Function to execute on each value in the array, taking four arguments:
+accumulator: The accumulator accumulates the callback's return values. It is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied (see below).
+currentValue: The current element being processed in the array.
+currentIndex (optional): The index of the current element being processed in the array.
+array (optional): The array reduceRight() was called upon.
+initialValue (optional): Object to use as the first argument to the first call of the callback.
+The method returns the reduced value.
+
+Here is an example of using Array.prototype.reduceRight():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let sum = arr.reduceRight(function(accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+console.log(sum); // 10
+```
+In this example, the reduceRight() method is used to calculate the sum of the elements in the array arr, starting from the rightmost element and working towards the left. The provided function (accumulator, currentValue) => accumulator + currentValue is executed for each element in the array, starting with an accumulator value of 0, to calculate the sum of the elements. The reduced value, 10, is returned and stored in the variable sum.
+### 26. The Array.prototype.reverse() method is a built-in JavaScript method that reverses the order of the elements in an array.
+
+Here is the syntax for using Array.prototype.reverse():
+
+```js
+array.reverse()
+```
+The method returns the reversed array.
+
+Here is an example of using Array.prototype.reverse():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let reversed = arr.reverse();
+console.log(reversed); // [4, 3, 2, 1]
+```
+In this example, the reverse() method is used to reverse the order of the elements in the array arr. The reversed array [4, 3, 2, 1] is returned and stored in the variable reversed.
+### 27. The Array.prototype.shift() method is a built-in JavaScript method that removes the first element from an array and returns the removed element.
+
+Here is the syntax for using Array.prototype.shift():
+
+```js
+array.shift()
+```
+The method returns the removed element.
+
+Here is an example of using Array.prototype.shift():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let first = arr.shift();
+console.log(first); // 1
+console.log(arr); // [2, 3, 4]
+```
+In this example, the shift() method is used to remove the first element 1 from the array arr. The removed element 1 is returned and stored in the variable first. The array arr is now [2, 3, 4].
+### 28. The Array.prototype.slice() method is a built-in JavaScript method that returns a shallow copy of a portion of an array. 
+The portion to be copied is specified by a start and an end index.
+
+Here is the syntax for using Array.prototype.slice():
+
+```js
+array.slice(start, end)
+```
+start (optional): The starting index of the portion to be copied (inclusive). If start is negative, it is treated as array.length + start where array.length is the length of the array.
+end (optional): The ending index of the portion to be copied (exclusive). If end is negative, it is treated as array.length + end. If end is not specified, all elements from start to the end of the array are copied.
+
+The method returns the sliced portion of the array as a new array. The original array is not modified.
+
+Here is an example of using Array.prototype.slice():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let sliced = arr.slice(1, 3);
+console.log(sliced); // [2, 3]
+console.log(arr); // [1, 2, 3, 4]
+```
+In this example, the slice() method is used to return a portion of the array arr from index 1 (inclusive) to index 3 (exclusive). The sliced portion [2, 3] is returned and stored in the variable sliced. The original array arr is not modified and remains [1, 2, 3, 4].
+### 29. The Array.prototype.some() method is a built-in JavaScript method that tests whether at least one element in an array passes the test implemented by the provided function.
+
+Here is the syntax for using Array.prototype.some():
+
+```js
+array.some(callback(element[, index[, array]])[, thisArg])
+```
+callback: A function that is called for each element in the array, taking the following arguments: element, index, and array. The function should return a boolean value indicating whether the element passed the test.
+thisArg (optional): Object to use as this when executing callback.
+
+The method returns a boolean value indicating whether at least one element in the array passed the test.
+
+Here is an example of using Array.prototype.some():
+
+```js
+let arr = [1, 2, 3, 4];
+
+let result = arr.some(function(element, index, array) {
+  return element % 2 === 0;
+});
+
+console.log(result); // true
+```
+In this example, the some() method is used to check if at least one element in the array arr is even. The function (element, index, array) => element % 2 === 0 is passed as the callback and it returns true if the element is even. The some() method returns true if at least one element in the array passed the test and false otherwise. In this case, the some() method returns true because the array arr contains at least one even number (2).
+### 30. The Array.prototype.sort() method is a built-in JavaScript method that sorts the elements of an array in place and returns the sorted array.
+
+Here is the syntax for using Array.prototype.sort():
+
+```js
+array.sort([compareFunction])
+```
+compareFunction (optional): A function that defines the sort order. It should return a negative, zero, or positive value, depending on the arguments, like:
+
+a negative value if a should be sorted lower than b
+a positive value if a should be sorted higher than b
+0 if a and b are equal and their order doesn't matter.
+If compareFunction is omitted, the array elements are sorted in lexicographic (alphabetical) order.
+
+Here is an example of using Array.prototype.sort():
+
+```js
+let arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+
+arr.sort();
+console.log(arr); // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+```
+In this example, the sort() method is used to sort the elements of the array arr. Since the compareFunction is omitted, the array elements are sorted in lexicographic order. The sort() method sorts the elements of the array in place and returns the sorted array, which is logged to the console.
+### 31. The Array.prototype.splice() method is a built-in JavaScript method that changes the contents of an array by adding, removing, and/or replacing elements.
+
+Here is the syntax for using Array.prototype.splice():
+
+```js
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+```
+start: An integer that specifies at what position to start changing the array.
+
+deleteCount (optional): An integer that specifies the number of elements to remove.
+
+item1, item2, ... (optional): The elements to add to the array.
+
+The splice() method returns an array containing the deleted elements (if any). If only one element is removed, an array of one element is returned. If no elements are removed, an empty array is returned.
+
+Here is an example of using Array.prototype.splice():
+
+```js
+let arr = [1, 2, 3, 4, 5];
+
+let removed = arr.splice(2, 2);
+console.log(arr); // [1, 2, 5]
+console.log(removed); // [3, 4]
+```
+In this example, the splice() method is used to remove two elements (3 and 4) from the array arr, starting at index 2. The removed elements are returned as an array, which is assigned to the variable removed, and logged to the console. The modified array is also logged to the console.
+### 32. The Array.prototype.toLocaleString() method is a built-in JavaScript method that returns a string representing the elements of an array, using the default locale.
+
+Here is the syntax for using Array.prototype.toLocaleString():
+
+```js
+array.toLocaleString()
+```
+The toLocaleString() method returns a string representation of the elements of the array, using the default locale. The elements are separated by a comma (,) by default.
+
+Here is an example of using Array.prototype.toLocaleString():
+
+```js
+let arr = [1, 2, 3];
+let str = arr.toLocaleString();
+console.log(str); // "1,2,3"
+```
+In this example, the toLocaleString() method is used to convert the elements of the array arr to a string, which is assigned to the variable str and logged to the console.
+### 33. The Array.prototype.toString() method is a built-in JavaScript method that returns a string representing the elements of an array.
+
+Here is the syntax for using Array.prototype.toString():
+
+```js
+array.toString()
+```
+The toString() method returns a string representation of the elements of the array. The elements are separated by a comma (,) by default.
+
+Here is an example of using Array.prototype.toString():
+
+```js
+let arr = [1, 2, 3];
+let str = arr.toString();
+console.log(str); // "1,2,3"
+```
+In this example, the toString() method is used to convert the elements of the array arr to a string, which is assigned to the variable str and logged to the console.
+### 34. The Array.prototype.unshift() method is a built-in JavaScript method that adds elements to the beginning of an array and returns the new length of the array.
+
+Here is the syntax for using Array.prototype.unshift():
+
+```js
+array.unshift(element1[, element2[, ...[, elementX]]])
+```
+The unshift() method takes one or more elements as arguments and adds them to the beginning of the array.
+
+Here is an example of using Array.prototype.unshift():
+
+```js
+let arr = [1, 2, 3];
+let newLength = arr.unshift(0);
+console.log(arr); // [0, 1, 2, 3]
+console.log(newLength); // 4
+```
+In this example, the unshift() method is used to add the element 0 to the beginning of the array arr. The new length of the array is then assigned to the variable newLength and logged to the console.
+### 35. The Array.prototype.values() method is a built-in JavaScript method that returns a new Array Iterator object that contains the values for each index in the array. 
+The Array Iterator object can be used in a for...of loop to iterate over the values in the array.
+
+Here is an example of using Array.prototype.values():
+
+```js
+let arr = [1, 2, 3];
+let iterator = arr.values();
+for (let value of iterator) {
+  console.log(value);
+}
+
+// Output:
+// 1
+// 2
+// 3
+```
+In this example, the values() method is used to get an Array Iterator object for the array arr. The for...of loop is then used to iterate over the values in the array and log them to the console.
